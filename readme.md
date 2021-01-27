@@ -6,8 +6,8 @@
 
 <br/>
 
-## [프론트엔드 개발자 채용](./Front/readme.md)
+## [프론트엔드 개발자 채용](./Front)
 
 <br/>
 
-## [서버 개발자 채용](./Server/readme.md)
+## [서버 개발자 채용](./Server)
