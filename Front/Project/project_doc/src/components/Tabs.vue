@@ -6,10 +6,30 @@
     >
       <v-tab>소속 정보</v-tab>
       <v-tab>소속 전문가</v-tab>
+      <v-tab-item
+        :key="1"
+      >
+      <v-card
+      class="mx-auto"
+      max-width="1000"
+      outlined>
+      <v-card-text>
+      <p class="headline text--primary">
+        알림 키워드
+      </p>
+      <p>{{companyList.data.alarmKeywordList}}</p>
+      <p class="headline text--primary">병원 홈페이지 </p>
+      <a href="http://www.docfriends.com">{{companyList.data.homepageUrl}}</a>
+      <p class="headline text--primary">병원 전화번호 </p>
+      <p>{{companyList.data.tel}}</p>
+      <p class="headline text--primary">주소 </p>
+      <p>{{companyList.data.addrRoad}} ({{companyList.data.addrEtc}})</p>
+      </v-card-text>
+      </v-card>
+      </v-tab-item>
 
       <v-tab-item
-        v-for="n in 3"
-        :key="n"
+        :key="2"
       >
         <v-container fluid>
           <v-row>
@@ -19,22 +39,16 @@
               cols="12"
               md="4"
             >
-              <v-img
-                :src="`https://picsum.photos/500/300?image=${i * n * 5 + 10}`"
-                :lazy-src="`https://picsum.photos/10/6?image=${i * n * 5 + 10}`"
-                aspect-ratio="1"
-              ></v-img>
             </v-col>
           </v-row>
         </v-container>
       </v-tab-item>
+
     </v-tabs>
   </v-card>
 </template>
 <script>
-import docAPI from '../api/docAPI'
 import { mapState } from 'vuex';
-import Constant from '../constant';
 export default {
   name: "Tabs",
    data(){
@@ -42,21 +56,8 @@ export default {
       items:null
     }
   },
-  created () {
-    this.$store.dispatch(Constant.FETCH_COMPANY);
-    // anqAPI.getDetail(userSn, token).then(res => {
-    //        this.$store.state.myInfo.myDetail=res;
-    //     });
-    //   this.$store.dispatch(Constant.FETCH_TEXTLIST, 1);
-    // },
-    },
      computed : (
-        mapState([ 'companyList'])
+        mapState(['companyList'])
     ),
 }
 </script>
-<style>
-.v-carousel__controls{
-  background: 0
-}
-</style>

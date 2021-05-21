@@ -1,38 +1,40 @@
 <template>
-  <v-carousel>
-    <v-carousel-item
-      v-for="(image,i) in images"
+  <v-card
+  elevation="24"
+  max-width="1000"
+  class="mx-auto">
+    <v-carousel
+    max-width="1500px"
+    class="mx-auto">
+      <v-carousel-item
+      v-for="(src,i) in this.companyList.data.imagePathList"
       :key="i"
-      :src="image.src"
+      :src="src"
       reverse-transition="fade-transition"
       transition="fade-transition"
       eager
-    ></v-carousel-item>
-  </v-carousel>
+      ></v-carousel-item>
+    </v-carousel>
+  </v-card>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   name: 'carousel',
   data () {
     return {
-      images: [
-         {
-            src: require('@/assets/company.png')
-         },
-         {
-            src: require('@/assets/home.png')
-         },
-         {
-            src: require('@/assets/logo.png')
-         }
-      ]
     }
-  }
+  },
+     computed : (
+        mapState(['companyList'])
+    )
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
+<style>
+.v-carousel__controls{
+  background: 0
+}
 </style>
