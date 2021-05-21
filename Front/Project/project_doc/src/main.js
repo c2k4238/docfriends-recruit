@@ -7,10 +7,17 @@ import vuetify from '@/plugins/vuetify'
 import axios from 'axios'
 import store from './store'
 import ES6Promise from 'es6-promise'
+import * as VueGoogleMaps from 'vue2-google-maps'
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 ES6Promise.polyfill()
 /* eslint-disable no-new */
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyD3z4Wu0LL1khmGJjCkVV7BSsR4ntHwvhA',
+    libraries: 'places',
+  }
+});
 new Vue({
   store,
   axios,
@@ -22,4 +29,4 @@ new Vue({
     iconfont: 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4'
   },
   template: '<App/>'
-})
+});

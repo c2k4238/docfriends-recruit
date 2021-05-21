@@ -6,5 +6,4 @@ export default {
   [Constant.FETCH_COMPANY]: (state, payload) => {
     state.companyList = payload.companyList
   }
-
 }

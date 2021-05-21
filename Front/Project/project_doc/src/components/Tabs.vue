@@ -24,6 +24,7 @@
       <p>{{companyList.data.tel}}</p>
       <p class="headline text--primary">주소 </p>
       <p>{{companyList.data.addrRoad}} ({{companyList.data.addrEtc}})</p>
+      <google-map/>
       </v-card-text>
       </v-card>
       </v-tab-item>
@@ -49,8 +50,12 @@
 </template>
 <script>
 import { mapState } from 'vuex';
+import GoogleMap from './GoogleMap.vue';
 export default {
   name: "Tabs",
+  components: {
+    GoogleMap
+  },
    data(){
     return{
       items:null
