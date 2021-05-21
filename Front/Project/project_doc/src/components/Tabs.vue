@@ -17,7 +17,7 @@
       <p class="headline text--primary">
         알림 키워드
       </p>
-      <p>{{companyList.data.alarmKeywordList}}</p>
+      <p style="display:inline;" v-for="(keyword, index) in this.companyList.data.alarmKeywordList" :key="keyword + index"> #{{keyword}}</p>
       <p class="headline text--primary">병원 홈페이지 </p>
       <a href="http://www.docfriends.com">{{companyList.data.homepageUrl}}</a>
       <p class="headline text--primary">병원 전화번호 </p>
@@ -61,8 +61,16 @@ export default {
       items:null
     }
   },
-     computed : (
-        mapState(['companyList'])
-    ),
+     computed : _.extend(
+      {
+        // keyword() { 
+        //   var list = this.companyList.data.alarmKeywordList;
+
+
+        //   return { lat: latVal, lng: lngVal };
+        // }
+      },
+      mapState(['companyList'])
+    )
 }
 </script>
