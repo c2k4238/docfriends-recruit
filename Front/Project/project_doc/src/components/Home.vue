@@ -1,14 +1,16 @@
 <template>
   <div class="home">
    <carousel/>
+   <tabs/>
   </div>
 </template>
 
 <script>
 import Carousel from "./Carousel";
+import Tabs from './Tabs.vue';
 export default {
   name: 'home',
-  components: {Carousel},
+  components: {Carousel,Tabs},
   data () {
     return {
       images: [
