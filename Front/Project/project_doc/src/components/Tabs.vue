@@ -14,17 +14,23 @@
       max-width="1000"
       outlined>
       <v-card-text>
-      <p class="headline text--primary">
-        알림 키워드
-      </p>
-      <p style="display:inline;" v-for="(keyword, index) in this.companyList.data.alarmKeywordList" :key="keyword + index"> #{{keyword}}</p>
-      <p class="headline text--primary">병원 홈페이지 </p>
+      <div class="sector">
+      <p class="headline mb-1 text--primary">알림 키워드</p>
+      <p style="display:inline;" v-for="(keyword) in this.companyList.data.alarmKeywordList" :key="keyword"> #{{keyword}}</p>
+      </div>
+      <div class="sector">
+      <p class="headline mb-1 text--primary">병원 홈페이지 </p>
       <a href="http://www.docfriends.com">{{companyList.data.homepageUrl}}</a>
-      <p class="headline text--primary">병원 전화번호 </p>
+      </div>
+      <div class="sector">
+      <p class="headline mb-1 text--primary">병원 전화번호 </p>
       <p>{{companyList.data.tel}}</p>
-      <p class="headline text--primary">주소 </p>
+      </div>
+      <div class="sector">
+      <p class="headline mb-1 text--primary">주소 </p>
       <p>{{companyList.data.addrRoad}} ({{companyList.data.addrEtc}})</p>
       <google-map/>
+      </div>
       </v-card-text>
       </v-card>
       </v-tab-item>
@@ -63,14 +69,14 @@ export default {
   },
      computed : _.extend(
       {
-        // keyword() { 
-        //   var list = this.companyList.data.alarmKeywordList;
-
-
-        //   return { lat: latVal, lng: lngVal };
-        // }
       },
       mapState(['companyList'])
     )
 }
 </script>
+<style scoped>
+.sector{
+  margin-top:20px; 
+  margin-bottom:30px;
+}
+</style>
