@@ -1,4 +1,4 @@
-var BASE_URL = './assets/data/';
+var BASE_URL = '/static/data/';
 
 export default {
   FETCH_COMPANY: BASE_URL + 'company.json', 
