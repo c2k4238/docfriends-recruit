@@ -5,5 +5,11 @@ export default {
 
   [Constant.FETCH_COMPANY]: (state, payload) => {
     state.companyList = payload.companyList
+  },
+  [Constant.FETCH_COMPANY_EXPERT]: (state, payload) => {
+    state.companyExpertList = payload.companyExpertList
+  },
+  [Constant.FETCH_EXPERT]: (state, payload) => {
+    state.expertList = payload.expertList
   }
 }

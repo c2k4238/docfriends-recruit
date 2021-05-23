@@ -19,6 +19,7 @@ export default {
   },
   created () {
     this.$store.dispatch(Constant.FETCH_COMPANY);
+    this.$store.dispatch(Constant.FETCH_COMPANY_EXPERT);
     },
      computed : (
         mapState(['companyList'])

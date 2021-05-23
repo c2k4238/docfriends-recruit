@@ -70,7 +70,7 @@ export default {
      computed : _.extend(
       {
       },
-      mapState(['companyList'])
+      mapState(['companyList','companyExpertList'])
     )
 }
 </script>
