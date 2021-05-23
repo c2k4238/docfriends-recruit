@@ -35,26 +35,58 @@
       </v-card>
       </v-tab-item>
 
-      <v-tab-item
+      <v-tab-item fluid
         :key="2"
       >
-        <v-container fluid>
+      <v-card
+      class="mx-auto"
+      max-width="1000"
+      >
           <v-row>
             <v-col
-              v-for="i in 6"
-              :key="i"
+              v-for="expert in this.companyExpertList.data.expertList"
+              :key="expert.expertPublicId"
               cols="12"
               md="4"
             >
+             <v-card 
+              max-width="400"
+              style="padding:20px;"
+             >
+              <v-flex class="center">
+                <v-avatar 
+                 style="margin-top:20px;"
+                 size="80">
+                <v-img 
+                 :src= expert.profileImgPath
+                 alt=""/>
+                </v-avatar>
+                <v-badge
+                 color="green"
+                 bottom
+                 bordered
+                 overlap
+                 offset-x="10"
+                 offset-y="10"
+                 style="margin-left:-10px; margin-bottom:-30px"
+                />
+                <v-card-text class="headline font-weight-bold">
+                {{ expert.name }} {{ expert.expertTypeName }}님
+                </v-card-text>
+                <p>
+                {{ companyList.data.name }}
+                </p>
+              </v-flex>
+             </v-card>
             </v-col>
           </v-row>
-        </v-container>
+      </v-card>
       </v-tab-item>
-
     </v-tabs>
   </v-card>
 </template>
 <script>
+import Constant from '../constant';
 import { mapState } from 'vuex';
 import GoogleMap from './GoogleMap.vue';
 export default {
@@ -64,12 +96,12 @@ export default {
   },
    data(){
     return{
-      items:null
     }
   },
-     computed : _.extend(
-      {
-      },
+  beforeCreate () {
+    this.$store.dispatch(Constant.FETCH_COMPANY_EXPERT);
+    },
+     computed : (
       mapState(['companyList','companyExpertList'])
     )
 }
@@ -78,5 +110,9 @@ export default {
 .sector{
   margin-top:20px; 
   margin-bottom:30px;
+}
+.center{
+  text-align: center;
+  justify-content: center;
 }
 </style>
