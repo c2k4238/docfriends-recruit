@@ -32,14 +32,14 @@
       <v-card-text v-if="jsonData">
       <div class="sector">
       <p class="headline mb-1 text--primary">학력 및 자격면허</p>
-      <v-card-text class="font-weight-bold">
-         {{ expertList.data.ability }}
+      <v-card-text class="font-weight-bold" v-for="ability in abilities" :key="ability">
+         {{ ability }}
       </v-card-text>
       </div>
       <div class="sector">
       <p class="headline mb-1 text--primary">경력 </p>
-      <v-card-text class="font-weight-bold">
-         {{ expertList.data.career }}
+      <v-card-text class="font-weight-bold" v-for="career in careers" :key="career"> 
+         {{ career }}
       </v-card-text>
       </div>
       <div class="sector">
@@ -80,7 +80,9 @@ export default {
   data () {
     return {
         expert: {},
-        jsonData: false
+        jsonData: false,
+        abilities: [],
+        careers: []
     }
   },
   created () {
@@ -90,8 +92,17 @@ export default {
         this.jsonData = true;
       }
   },
-  computed : (
-    mapState(['companyExpertList', 'expertList', 'expertIdx'])
+  beforeUpdate (){
+    this.abilities = this.$store.state.expertList.data.ability.split("\n\n");
+    this.careers = this.$store.state.expertList.data.career.split("\n\n");
+  },
+  computed: _.extend(
+      {
+        // ability(){
+        //   return this.$store.state.expertList.ability.split("\n\n");
+        // }
+      },
+      mapState(['companyExpertList', 'expertList', 'expertIdx'])
   ),
   methods: {
     getStateColor(alarmActivationState){
@@ -103,6 +114,9 @@ export default {
       }else{
         return require('@/assets/default.png');
       }
+    },
+    getAbility(){
+      return this.$store.state.expertList.ability.split("\n\n");
     }
   }
 }

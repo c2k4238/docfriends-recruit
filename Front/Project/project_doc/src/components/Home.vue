@@ -2,17 +2,19 @@
   <div class="home">
    <carousel/>
    <tabs/>
+   <footer/>
   </div>
 </template>
 
 <script>
+import Footer from "./Footer";
 import Carousel from "./Carousel";
 import Tabs from './Tabs.vue';
 import { mapState } from 'vuex';
 import Constant from '../constant';
 export default {
   name: 'home',
-  components: {Carousel,Tabs},
+  components: {Carousel,Tabs,Footer},
   data () {
     return {
     }
