@@ -16,7 +16,7 @@
       <v-card-text>
       <div class="sector">
       <p class="headline mb-1 text--primary">알림 키워드</p>
-      <p style="display:inline;" v-for="(keyword) in this.companyList.data.alarmKeywordList" :key="keyword"> #{{keyword}}</p>
+      <p style="display:inline; color:green;" v-for="(keyword) in this.companyList.data.alarmKeywordList" :key="keyword"> #{{keyword}}</p>
       </div>
       <div class="sector">
       <p class="headline mb-1 text--primary">병원 홈페이지 </p>

@@ -3,11 +3,14 @@
   elevation="24"
   max-width="1000"
   class="mx-auto">
+   <h2 style="padding:30px; text-align:center;">
+     {{companyList.data.name}}
+   </h2>
     <v-carousel
     max-width="1500px"
     class="mx-auto">
       <v-carousel-item
-      v-for="(src,i) in this.companyList.data.imagePathList"
+      v-for="(src,i) in companyList.data.imagePathList"
       :key="i"
       :src="src"
       reverse-transition="fade-transition"

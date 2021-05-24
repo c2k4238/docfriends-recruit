@@ -27,7 +27,6 @@
       <v-card
       class="mx-auto my-12"
       max-width="1000"
-      
       outlined>
       <v-card-text v-if="jsonData">
       <div class="sector">
@@ -50,7 +49,7 @@
       </div>
       <div class="sector">
       <p class="headline mb-1 text--primary">알림 키워드</p>
-      <v-card-text class="font-weight-bold">
+      <v-card-text style="color:green">
       <p style="display:inline;" v-for="(keyword) in this.expertList.data.alarmKeywordList" :key="keyword"> #{{keyword}}</p>
       </v-card-text>
       </div>
@@ -61,6 +60,16 @@
         {{ expertList.data.companyAddr }} {{ expertList.data.companyAddrEtc }}
       </v-card-text>
       </div>
+      <div class="center">
+      <v-btn
+        class="ma-2"
+        outlined
+        color="indigo"
+        @click="link(companyList.data.homepageUrl)"
+      >
+        닥프렌즈 병원 바로가기 >
+      </v-btn>
+      </div>
       </v-card-text>
 
       <v-card-text v-else>
@@ -68,7 +77,7 @@
         <p class="center headline mb-1 text--primary">정보가 존재하지 않습니다.</p>
         </div>
       </v-card-text>
-      </v-card>   
+    </v-card>   
   </div>
 </template>
 
@@ -87,8 +96,8 @@ export default {
   },
   created () {
       this.expert = this.$store.state.companyExpertList.data.expertList[this.$store.state.expertIdx];
-      if(this.expert.expertPublicId === '24oiQH0C-endN-5iFm-bMbL-xZmEjRujQdwf'){
-        this.$store.dispatch(Constant.FETCH_EXPERT);
+      if(this.expert.expertPublicId === '24oiQH0C-endN-5iFm-bMbL-xZmEjRujQdwf'){ //DB에서 같은 publicId를 찾아오는 것으로 가정
+        this.$store.dispatch(Constant.FETCH_EXPERT); 
         this.jsonData = true;
       }
   },
@@ -98,11 +107,8 @@ export default {
   },
   computed: _.extend(
       {
-        // ability(){
-        //   return this.$store.state.expertList.ability.split("\n\n");
-        // }
       },
-      mapState(['companyExpertList', 'expertList', 'expertIdx'])
+      mapState(['companyList','companyExpertList', 'expertList'])
   ),
   methods: {
     getStateColor(alarmActivationState){
@@ -115,8 +121,8 @@ export default {
         return require('@/assets/default.png');
       }
     },
-    getAbility(){
-      return this.$store.state.expertList.ability.split("\n\n");
+    link(homepageUrl){
+      window.open(homepageUrl);
     }
   }
 }
