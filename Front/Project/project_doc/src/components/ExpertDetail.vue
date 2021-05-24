@@ -22,7 +22,53 @@
         mdi-heart
         </v-icon>
         <span class="subheading mr-2">{{expert.likeCnt}}</span>
-        </v-flex>  
+    </v-flex>  
+
+      <v-card
+      class="mx-auto my-12"
+      max-width="1000"
+      
+      outlined>
+      <v-card-text v-if="jsonData">
+      <div class="sector">
+      <p class="headline mb-1 text--primary">학력 및 자격면허</p>
+      <v-card-text class="font-weight-bold">
+         {{ expertList.data.ability }}
+      </v-card-text>
+      </div>
+      <div class="sector">
+      <p class="headline mb-1 text--primary">경력 </p>
+      <v-card-text class="font-weight-bold">
+         {{ expertList.data.career }}
+      </v-card-text>
+      </div>
+      <div class="sector">
+      <p class="headline mb-1 text--primary">진료과 </p>
+      <v-card-text class="font-weight-bold">
+         {{ expertList.data.subject }}
+      </v-card-text>
+      </div>
+      <div class="sector">
+      <p class="headline mb-1 text--primary">알림 키워드</p>
+      <v-card-text class="font-weight-bold">
+      <p style="display:inline;" v-for="(keyword) in this.expertList.data.alarmKeywordList" :key="keyword"> #{{keyword}}</p>
+      </v-card-text>
+      </div>
+      <div class="sector">
+      <p class="headline mb-1 text--primary">소속 정보 </p>
+      <v-card-text class="font-weight-bold">
+        {{ expertList.data.companyName }} <br/>
+        {{ expertList.data.companyAddr }} {{ expertList.data.companyAddrEtc }}
+      </v-card-text>
+      </div>
+      </v-card-text>
+
+      <v-card-text v-else>
+        <div class="sector">
+        <p class="center headline mb-1 text--primary">정보가 존재하지 않습니다.</p>
+        </div>
+      </v-card-text>
+      </v-card>   
   </div>
 </template>
 
@@ -33,14 +79,19 @@ export default {
   name: 'expertDetail',
   data () {
     return {
-        expert: {}
+        expert: {},
+        jsonData: false
     }
   },
   created () {
       this.expert = this.$store.state.companyExpertList.data.expertList[this.$store.state.expertIdx];
+      if(this.expert.expertPublicId === '24oiQH0C-endN-5iFm-bMbL-xZmEjRujQdwf'){
+        this.$store.dispatch(Constant.FETCH_EXPERT);
+        this.jsonData = true;
+      }
   },
   computed : (
-    mapState(['companyExpertList','expertIdx'])
+    mapState(['companyExpertList', 'expertList', 'expertIdx'])
   ),
   methods: {
     getStateColor(alarmActivationState){
@@ -58,6 +109,10 @@ export default {
 </script>
 
 <style scoped>
+.sector{
+  margin-top:20px; 
+  margin-bottom:30px;
+}
 .center{
   text-align: center;
   justify-content: center;
