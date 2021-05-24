@@ -15,20 +15,20 @@
           outlined>
           <v-card-text>
             <div class="sector">
-              <p class="headline mb-1 text--primary">알림 키워드</p>
-              <p style="display:inline; color:green;" v-for="(keyword) in this.companyList.data.alarmKeywordList" :key="keyword"> #{{keyword}}</p>
+              <p class="headline mb-2 text--primary">알림 키워드</p>
+              <p class="text" style="display:inline; color:green;" v-for="(keyword) in this.companyList.data.alarmKeywordList" :key="keyword"> #{{keyword}}</p>
             </div>
             <div class="sector">
-              <p class="headline mb-1 text--primary">병원 홈페이지 </p>
-              <a href="http://www.docfriends.com">{{companyList.data.homepageUrl}}</a>
+              <p class="headline mb-2 text--primary">병원 홈페이지 </p>
+              <a class="text" href="http://www.docfriends.com">{{companyList.data.homepageUrl}}</a>
             </div>
             <div class="sector">
-              <p class="headline mb-1 text--primary">병원 전화번호 </p>
-              <p>{{companyList.data.tel}}</p>
+              <p class="headline mb-2 text--primary">병원 전화번호 </p>
+              <p class="text" v-bind="tel">{{tel}}</p>
             </div>
             <div class="sector">
-              <p class="headline mb-1 text--primary">주소 </p>
-              <p>{{companyList.data.addrRoad}} ({{companyList.data.addrEtc}})</p>
+              <p class="headline mb-2 text--primary">주소 </p>
+              <p class="text">{{companyList.data.addrRoad}} ({{companyList.data.addrEtc}})</p>
               <google-map/>
             </div>
           </v-card-text>
@@ -102,11 +102,15 @@ export default {
   },
    data(){
     return{
+      tel: ''
     }
   },
   computed : (
         mapState(['companyList','companyExpertList'])
   ),
+  beforeUpdate() {
+    this.tel = this.$store.state.companyList.data.tel.replace(/(^02.{0}|^01.{1}|[0-9]{3})([0-9]+)([0-9]{4})/, "$1-$2-$3");
+  },
   methods: {
     getStateColor(alarmActivationState){
       return alarmActivationState==="Y" ? 'green' : 'grey';
@@ -121,6 +125,9 @@ export default {
     navigate(index){
       this.$store.commit("setExpertIdx", index);
       this.$router.push("/expertDetail/");
+    },
+    getTel(){
+      this.$store.state.companyList.data.tel;
     }
   }
 }
@@ -128,10 +135,14 @@ export default {
 <style scoped>
 .sector{
   margin-top:20px; 
-  margin-bottom:30px;
+  margin-bottom:25px;
 }
 .center{
   text-align: center;
   justify-content: center;
+}
+.text{
+  font-size: 17px;
+  margin-left: 5px;
 }
 </style>
