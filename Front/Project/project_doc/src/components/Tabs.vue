@@ -41,15 +41,18 @@
       <v-card
       class="mx-auto"
       max-width="1000"
+      flat
+      style="padding:20px"
       >
           <v-row>
             <v-col
-              v-for="expert in this.companyExpertList.data.expertList"
+              v-for="(expert,index) in this.companyExpertList.data.expertList"
               :key="expert.expertPublicId"
               cols="12"
               md="4"
             >
              <v-card 
+              elevation= "5"
               max-width="400"
               style="padding:20px;"
              >
@@ -57,30 +60,33 @@
                 <v-avatar 
                  style="margin-top:20px;"
                  size="80">
-                <v-img 
-                 :src= expert.profileImgPath
-                 alt=""/>
+                  <v-img 
+                  :src= expert.profileImgPath
+                  alt=""/>
                 </v-avatar>
                 <v-badge
-                 color="green"
-                 bottom
-                 bordered
-                 overlap
-                 offset-x="10"
-                 offset-y="10"
-                 style="margin-left:-10px; margin-bottom:-30px"
-                />
+                  :color= expertList[index].stateColor
+                  bottom 
+                  bordered
+                  overlap
+                  offset-x="10"
+                  offset-y="10"
+                  style="margin-left:-10px; margin-bottom:-30px"/>
                 <v-card-text class="headline font-weight-bold">
-                {{ expert.name }} {{ expert.expertTypeName }}님
+                  {{ expert.name }} {{ expert.expertTypeName }}님
                 </v-card-text>
                 <p>
-                {{ companyList.data.name }}
+                  {{ companyList.data.name }}
                 </p>
+                <v-icon class="mr-1" color="red">
+                 mdi-heart
+                </v-icon>
+                <span class="subheading mr-2">{{expert.likeCnt}}</span>
               </v-flex>
              </v-card>
             </v-col>
           </v-row>
-      </v-card>
+        </v-card>
       </v-tab-item>
     </v-tabs>
   </v-card>
@@ -96,14 +102,19 @@ export default {
   },
    data(){
     return{
+      expertList: {}
     }
   },
-  beforeCreate () {
-    this.$store.dispatch(Constant.FETCH_COMPANY_EXPERT);
-    },
-     computed : (
-      mapState(['companyList','companyExpertList'])
-    )
+  updated () {
+    this.expertList=this.$store.state.companyExpertList.data.expertList;
+    this.expertList.forEach((expert,index) => {
+    var expertStatus = expert.alarmActivationState==="Y" ? 'green' : 'grey';
+    this.$store.state.companyExpertList.data.expertList[index].stateColor = expertStatus;
+    }); 
+  },
+  computed : (
+        mapState(['companyList','companyExpertList'])
+  )
 }
 </script>
 <style scoped>

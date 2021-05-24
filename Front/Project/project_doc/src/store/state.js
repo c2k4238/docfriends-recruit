@@ -15,6 +15,22 @@ export default {
       lon: ''
     }
   },
-  companyExpertList: {},
+  companyExpertList: {
+    responseCode: '',
+    data: {
+      companyPublicId: '',
+      expertList: [
+        {
+          profileImgPath: '',
+          alarmActivationState: '',
+          name: '',
+          expertTypeName: '',
+          likeCnt: 0,
+          expertPublicId: '',
+          stateColor: ''
+        }
+      ]
+    }
+  },
   expertList: {}
 }

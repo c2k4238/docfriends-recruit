@@ -17,13 +17,13 @@ export default {
     return {
     }
   },
-  created () {
+  beforeCreate () {
     this.$store.dispatch(Constant.FETCH_COMPANY);
-    },
-     computed : (
-        mapState(['companyList'])
-    ),
-    
+    this.$store.dispatch(Constant.FETCH_COMPANY_EXPERT);
+  },
+  computed : (
+    mapState(['companyList'])
+  )
 }
 </script>
 
