@@ -16,19 +16,19 @@
           <v-card-text>
             <div class="sector">
               <p class="headline mb-2 text--primary">알림 키워드</p>
-              <p class="text" style="display:inline; color:green;" v-for="(keyword) in this.companyList.data.alarmKeywordList" :key="keyword"> #{{keyword}}</p>
+              <p class="text" v-for="(keyword) in this.companyList.data.alarmKeywordList" :key="keyword"> #{{keyword}}</p>
             </div>
             <div class="sector">
               <p class="headline mb-2 text--primary">병원 홈페이지 </p>
-              <a class="text" href="http://www.docfriends.com">{{companyList.data.homepageUrl}}</a>
+              <a class="text2" style="color:green" href="http://www.docfriends.com">{{companyList.data.homepageUrl}}</a>
             </div>
             <div class="sector">
               <p class="headline mb-2 text--primary">병원 전화번호 </p>
-              <p class="text" v-bind="tel">{{tel}}</p>
+              <p class="text2" v-bind="tel">{{tel}}</p>
             </div>
             <div class="sector">
               <p class="headline mb-2 text--primary">주소 </p>
-              <p class="text">{{companyList.data.addrRoad}} ({{companyList.data.addrEtc}})</p>
+              <p class="text2">{{companyList.data.addrRoad}} ({{companyList.data.addrEtc}})</p>
               <google-map/>
             </div>
           </v-card-text>
@@ -142,7 +142,14 @@ export default {
   justify-content: center;
 }
 .text{
+  display:inline;
   font-size: 17px;
   margin-left: 5px;
+  color: green;
+}
+.text2{
+  font-size: 17px;
+  margin-left: 5px;
+  color: rgb(90, 90, 90);
 }
 </style>

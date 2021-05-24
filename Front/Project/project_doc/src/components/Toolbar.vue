@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" @click="link()">
     <v-img 
       width="200"
       height="50"
@@ -14,11 +14,17 @@ export default {
     return {
       src: require('@/assets/doctalk.png') 
     }
+  },
+  methods: {
+    link(){
+      this.$router.push("/");
+    }    
   }
 }
 </script>
 <style scoped>
 .header{
+  cursor: pointer;
   background-color: rgb(42, 187, 182)
 }
 </style>

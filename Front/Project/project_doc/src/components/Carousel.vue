@@ -7,6 +7,7 @@
      {{companyList.data.name}}
     </h2>
     <v-carousel
+      interval="3000"
       max-width="1500px"
       class="mx-auto">
         <v-carousel-item

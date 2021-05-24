@@ -1,9 +1,10 @@
 <template>
   <div>
+    <toolbar/>
     <v-flex class="center">
       <v-avatar 
-        style="margin-top:20px;"
-        size="80">
+        style="margin-top:50px;"
+        size="100">
         <v-img 
           :src= "getImgUrl(expert.profileImgPath)" />
       </v-avatar>
@@ -14,7 +15,7 @@
         overlap
         offset-x="10"
         offset-y="10"
-        style="margin-left:-10px; margin-bottom:-30px"/>
+        style="margin-left:-10px; margin-bottom:-50px"/>
       <v-card-text class="headline font-weight-bold">
         {{ expert.name }} {{ expert.expertTypeName }}님
       </v-card-text>
@@ -77,14 +78,18 @@
           <p class="center headline mb-1 text--primary">정보가 존재하지 않습니다.</p>
         </div>
       </v-card-text>
-    </v-card>   
+    </v-card>  
+    <footers/> 
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import Footers from '../components/Footers.vue';
+import Toolbar from '../components/Toolbar.vue';
 import Constant from '../constant';
 export default {
+  components: { Toolbar, Footers },
   name: 'expertDetail',
   data () {
     return {
