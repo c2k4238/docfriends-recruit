@@ -1,22 +1,22 @@
 <template>
   <v-card
-  elevation="24"
-  max-width="1000"
-  class="mx-auto">
-   <h2 style="padding:30px; text-align:center;">
-     {{companyList.data.name}}
-   </h2>
-    <v-carousel
-    max-width="1500px"
+    elevation="24"
+    max-width="1000"
     class="mx-auto">
-      <v-carousel-item
-      v-for="(src,i) in companyList.data.imagePathList"
-      :key="i"
-      :src="src"
-      reverse-transition="fade-transition"
-      transition="fade-transition"
-      eager
-      ></v-carousel-item>
+    <h2 style="padding:30px; text-align:center;">
+     {{companyList.data.name}}
+    </h2>
+    <v-carousel
+      max-width="1500px"
+      class="mx-auto">
+        <v-carousel-item
+          v-for="(src,i) in companyList.data.imagePathList"
+          :key="i"
+          :src="src"
+          reverse-transition="fade-transition"
+          transition="fade-transition"
+          eager
+        ></v-carousel-item>
     </v-carousel>
   </v-card>
 </template>
@@ -29,9 +29,9 @@ export default {
     return {
     }
   },
-     computed : (
-        mapState(['companyList'])
-    )
+  computed : (
+    mapState(['companyList'])
+  )
 }
 </script>
 

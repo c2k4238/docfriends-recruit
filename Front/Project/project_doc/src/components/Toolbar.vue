@@ -1,9 +1,9 @@
 <template>
   <div class="header">
     <v-img 
-    width="200"
-    height="50"
-    :src= src />    
+      width="200"
+      height="50"
+     :src= src />    
   </div>
 </template>
 
