@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import Carousel from "./Carousel";
-import Tabs from './Tabs.vue';
+import Carousel from "../components/Carousel";
+import Tabs from '../components/Tabs.vue';
 import { mapState } from 'vuex';
 import Constant from '../constant';
-import Toolbar from './Toolbar.vue';
-import Footers from './Footers.vue';
+import Toolbar from '../components/Toolbar.vue';
+import Footers from '../components/Footers.vue';
 export default {
   name: 'home',
   components: {Carousel, Tabs, Toolbar, Footers},

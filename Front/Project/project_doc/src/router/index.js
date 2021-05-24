@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import ExpertDetail from '@/components/ExpertDetail'
+import Home from '@/layouts/Home.vue'
+import ExpertDetail from '@/layouts/ExpertDetail.vue'
 Vue.use(Router)
 
 export default new Router({

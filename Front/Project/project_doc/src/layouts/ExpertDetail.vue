@@ -40,7 +40,7 @@
       <v-card-text class="font-weight-bold" v-for="career in careers" :key="career"> 
          {{ career }}
       </v-card-text>
-      </div>
+      </div> 
       <div class="sector">
       <p class="headline mb-1 text--primary">진료과 </p>
       <v-card-text class="font-weight-bold">
