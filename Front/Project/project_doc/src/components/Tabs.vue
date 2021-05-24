@@ -55,17 +55,17 @@
               elevation= "5"
               max-width="400"
               style="padding:20px;"
+              @click= "navigate(index)"
              >
               <v-flex class="center">
                 <v-avatar 
                  style="margin-top:20px;"
                  size="80">
                   <v-img 
-                  :src= expert.profileImgPath
-                  alt=""/>
+                  :src= "getImgUrl(expert.profileImgPath)" />
                 </v-avatar>
                 <v-badge
-                  :color= expertList[index].stateColor
+                  :color= "getStateColor(expert.alarmActivationState)"
                   bottom 
                   bordered
                   overlap
@@ -102,19 +102,26 @@ export default {
   },
    data(){
     return{
-      expertList: {}
     }
-  },
-  updated () {
-    this.expertList=this.$store.state.companyExpertList.data.expertList;
-    this.expertList.forEach((expert,index) => {
-    var expertStatus = expert.alarmActivationState==="Y" ? 'green' : 'grey';
-    this.$store.state.companyExpertList.data.expertList[index].stateColor = expertStatus;
-    }); 
   },
   computed : (
         mapState(['companyList','companyExpertList'])
-  )
+  ),
+  methods: {
+    getStateColor(alarmActivationState){
+      return alarmActivationState==="Y" ? 'green' : 'grey';
+    },
+    getImgUrl(filename){
+      if (filename.length>0) {
+        return filename;
+      }else{
+        return require('@/assets/default.png');
+      }
+    },
+    navigate(index){
+      console.log(".........nav"+index)
+    }
+  }
 }
 </script>
 <style scoped>
