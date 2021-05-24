@@ -11,5 +11,6 @@ export default {
   },
   [Constant.FETCH_EXPERT]: (state, payload) => {
     state.expertList = payload.expertList
-  }
+  },
+  setExpertIdx: (state, idx) => { state.expertIdx = idx },
 }

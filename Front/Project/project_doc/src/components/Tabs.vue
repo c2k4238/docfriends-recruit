@@ -119,7 +119,8 @@ export default {
       }
     },
     navigate(index){
-      console.log(".........nav"+index)
+      this.$store.commit("setExpertIdx", index);
+      this.$router.push("/expertDetail/");
     }
   }
 }

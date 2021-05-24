@@ -27,10 +27,10 @@ export default {
           expertTypeName: '',
           likeCnt: 0,
           expertPublicId: '',
-          stateColor: ''
         }
       ]
     }
   },
-  expertList: {}
+  expertList: {},
+  expertIdx: 0
 }
