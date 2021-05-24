@@ -24,7 +24,7 @@
             </div>
             <div class="sector">
               <p class="headline mb-2 text--primary">병원 전화번호 </p>
-              <p class="text2" v-bind="tel">{{tel}}</p>
+              <p class="text2">{{tel}}</p>
             </div>
             <div class="sector">
               <p class="headline mb-2 text--primary">주소 </p>
