@@ -14,7 +14,7 @@ ES6Promise.polyfill()
 /* eslint-disable no-new */
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyD3z4Wu0LL1khmGJjCkVV7BSsR4ntHwvhA',
+    key: 'AIzaSyBg8mVkuPDdSvKHb_Hc79FFARFO3BJJldU',
     libraries: 'places',
   }
 });
